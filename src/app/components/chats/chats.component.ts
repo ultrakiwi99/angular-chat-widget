@@ -14,13 +14,15 @@ export class ChatsComponent implements OnInit, OnDestroy {
   selectedChat: Chat | undefined;
   subscriptions: Subscription[] = [];
 
-  constructor(private cs: ChatsService) { }
+  constructor(private cs: ChatsService) {
+  }
 
   ngOnInit(): void {
+    this.cs.loadChats();
     this.subscriptions = [
-    this.cs.myChats$.subscribe(chats => this.myChats = chats),
-    this.cs.allChats$.subscribe(chats => this.allChat = chats),
-    this.cs.selectedChat$.subscribe(chat => this.selectedChat = chat)
+      this.cs.myChats$.subscribe(chats => this.myChats = chats),
+      this.cs.allChats$.subscribe(chats => this.allChat = chats),
+      this.cs.selectedChat$.subscribe(chat => this.selectedChat = chat)
     ]
   }
 

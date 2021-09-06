@@ -7,20 +7,26 @@ import {map} from "rxjs/operators";
   providedIn: 'root'
 })
 export class ChatsService {
-  allChats$: Observable<Chat[]>
-  myChats$: Observable<Chat[]>
-  selectedChat$: BehaviorSubject<Chat | undefined>
+  allChats$: BehaviorSubject<Chat[]> = new BehaviorSubject<Chat[]>([]);
+  myChats$: BehaviorSubject<Chat[]> = new BehaviorSubject<Chat[]>([]);
+  selectedChat$: BehaviorSubject<Chat | undefined> = new BehaviorSubject<Chat | undefined>(undefined);
 
   constructor() {
-    this.allChats$ = of([
+  }
+
+  loadChats(): void {
+    of([
       {uid: '1', title: 'Chat 1'},
       {uid: '2', title: 'Chat 2'}
-    ]);
-    this.myChats$ = of([
+    ]).subscribe(result => {
+      this.allChats$.next([...this.allChats$.value, ...result]);
+    });
+    of([
       {uid: '3', title: 'Chat 3'},
       {uid: '4', title: 'Chat 4'}
-    ]);
-    this.selectedChat$ = new BehaviorSubject<Chat | undefined>(undefined);
+    ]).subscribe(result => {
+      this.myChats$.next([...this.myChats$.value, ...result]);
+    });
   }
 
   selectChat(uid: string, collectionName: 'my' | 'all'): void {
