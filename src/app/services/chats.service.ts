@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, Observable, of, combineLatest} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable, of} from "rxjs";
 import {Chat} from "../interfaces/chat";
 import {map} from "rxjs/operators";
 
@@ -23,14 +23,19 @@ export class ChatsService {
     this.selectedChat$ = new BehaviorSubject<Chat | undefined>(undefined);
   }
 
-  selectChatInAll(uid: string): void {
-    this.allChats$
-      .pipe(map(chat => chat.find(c => c.uid === uid)))
-      .subscribe(chat => this.selectedChat$.next(chat));
+  selectChat(uid: string, collectionName: 'my' | 'all'): void {
+    const collections = {
+      'my': this.myChats$,
+      'all': this.allChats$
+    };
+    this.selectChatInCollection(collections[collectionName], uid);
   }
 
-  selectChatInMy(uid: string): void {
-    this.myChats$
+  selectChatInCollection(collection: Observable<Chat[]> | undefined, uid: string): void {
+    if (!collection) {
+      return;
+    }
+    collection
       .pipe(map(chat => chat.find(c => c.uid === uid)))
       .subscribe(chat => this.selectedChat$.next(chat));
   }
@@ -38,4 +43,4 @@ export class ChatsService {
   clearSelected(): void {
     this.selectedChat$.next(undefined);
   }
- }
+}

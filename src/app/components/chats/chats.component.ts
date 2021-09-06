@@ -28,12 +28,8 @@ export class ChatsComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  selectChatInMy(chat: Chat) {
-    this.cs.selectChatInMy(chat.uid);
-  }
-
-  selectChatInAll(chat: Chat) {
-    this.cs.selectChatInAll(chat.uid);
+  selectChat(chat: Chat, collection: 'my' | 'all') {
+    this.cs.selectChat(chat.uid, collection);
   }
 
   clearSelectedChat() {

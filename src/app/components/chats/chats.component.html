@@ -2,14 +2,14 @@
 
 <h2>My</h2>
 <ul>
-  <li *ngFor="let chat of myChats" style="cursor: pointer" (click)="selectChatInMy(chat)">
+  <li *ngFor="let chat of myChats" style="cursor: pointer" (click)="selectChat(chat, 'my')">
     uid: {{chat.uid}} title: {{chat.title}}
   </li>
 </ul>
 
 <h2>All</h2>
 <ul>
-  <li *ngFor="let chat of allChat" style="cursor: pointer" (click)="selectChatInAll(chat)">
+  <li *ngFor="let chat of allChat" style="cursor: pointer" (click)="selectChat(chat, 'all')">
     uid: {{chat.uid}} title: {{chat.title}}
   </li>
 </ul>
