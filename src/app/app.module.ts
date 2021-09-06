@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HighlightDirective } from './highlight.directive';
+import { ChatsComponent } from './components/chats/chats.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective
+    HighlightDirective,
+    ChatsComponent
   ],
   imports: [
     BrowserModule

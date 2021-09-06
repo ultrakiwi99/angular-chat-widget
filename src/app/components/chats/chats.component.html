@@ -1,0 +1,22 @@
+<h1>Chats playground</h1>
+
+<h2>My</h2>
+<ul>
+  <li *ngFor="let chat of myChats" style="cursor: pointer" (click)="selectChatInMy(chat)">
+    uid: {{chat.uid}} title: {{chat.title}}
+  </li>
+</ul>
+
+<h2>All</h2>
+<ul>
+  <li *ngFor="let chat of allChat" style="cursor: pointer" (click)="selectChatInAll(chat)">
+    uid: {{chat.uid}} title: {{chat.title}}
+  </li>
+</ul>
+
+<h2>Selected now</h2>
+<div *ngIf="selectedChat">
+  uid: {{selectedChat.uid}} title: {{selectedChat.title}}
+</div>
+
+<button (click)="clearSelectedChat()">Clear chat</button>
