@@ -49,4 +49,9 @@ export class ChatsService {
   clearSelected(): void {
     this.selectedChat$.next(undefined);
   }
+
+  addChat() {
+    const uid = Math.floor(Math.random() * 1000).toString();
+    this.myChats$.next([{ uid, title: `Chat ${uid}`}].concat(this.myChats$.getValue()));
+  }
 }

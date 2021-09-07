@@ -37,4 +37,8 @@ export class ChatsComponent implements OnInit, OnDestroy {
   clearSelectedChat() {
     this.cs.clearSelected();
   }
+
+  addRandomChat() {
+    this.cs.addChat();
+  }
 }
