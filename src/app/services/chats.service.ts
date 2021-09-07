@@ -19,13 +19,13 @@ export class ChatsService {
       {uid: '1', title: 'Chat 1'},
       {uid: '2', title: 'Chat 2'}
     ]).pipe(delay(600)).subscribe(result => {
-      this.allChats$.next([...this.allChats$.value, ...result]);
+      this.allChats$.next(result);
     });
     of([
       {uid: '3', title: 'Chat 3'},
       {uid: '4', title: 'Chat 4'}
     ]).pipe(delay(550)).subscribe(result => {
-      this.myChats$.next([...this.myChats$.value, ...result]);
+      this.myChats$.next(result);
     });
   }
 

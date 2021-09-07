@@ -41,4 +41,8 @@ export class ChatsComponent implements OnInit, OnDestroy {
   addRandomChat() {
     this.cs.addChat();
   }
+
+  reloadChats() {
+    this.cs.loadChats();
+  }
 }
