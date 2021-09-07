@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of} from "rxjs";
 import {Chat} from "../interfaces/chat";
-import {map} from "rxjs/operators";
+import {delay, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +18,13 @@ export class ChatsService {
     of([
       {uid: '1', title: 'Chat 1'},
       {uid: '2', title: 'Chat 2'}
-    ]).subscribe(result => {
+    ]).pipe(delay(600)).subscribe(result => {
       this.allChats$.next([...this.allChats$.value, ...result]);
     });
     of([
       {uid: '3', title: 'Chat 3'},
       {uid: '4', title: 'Chat 4'}
-    ]).subscribe(result => {
+    ]).pipe(delay(550)).subscribe(result => {
       this.myChats$.next([...this.myChats$.value, ...result]);
     });
   }
