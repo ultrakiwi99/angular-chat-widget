@@ -1,4 +1,4 @@
-# Chat widget example made with angular.
+# Chat widget example app made with angular.
 
 This project was made as simple angular based chat widget. Main points are observable-based chat messages flow and as simple styling as possible.
 
