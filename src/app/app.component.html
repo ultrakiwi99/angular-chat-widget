@@ -1,23 +1,14 @@
-<h1>My first attribute directive</h1>
-
-<h2>Pick a highlight color</h2>
-
-<div>
-  <input type="radio" name="colors" (click)="color='lightgreen'" />Green
-  <input type="radio" name="colors" (click)="color='yellow'" />Yellow
-  <input type="radio" name="colors" (click)="color='cyan'" />Cyan
+<div class="chat-window" *ngIf="chatIsVisible">
+  <div class="chat-header">
+    <h1>Angular chat</h1>
+  </div>
+  <div class="chat-messages"></div>
+  <div class="chat-input-controls">
+    <input />
+    <button>Send</button>
+  </div>
 </div>
-<div style="width: fit-content">
-  <p [appHighlight]="color" defaultColor="violet">Highlight me</p>
-  <p [appHighlight]="color">Highlight me too, no default color!</p>
-</div>
-
-<h3>ngNonBindable with directive</h3>
-<div style="width: fit-content">
-  <p ngNonBindable [appHighlight]="'yellow'">
-    This should not eavluate to 2 {{ 1 + 1 }}, but will highlight yellow
-  </p>
-</div>
-
-<h3>Chats playground</h3>
-<app-chats></app-chats>
+<button class="chat-button" (click)="toggleChat()">
+  <span *ngIf="chatIsVisible">Off</span>
+  <span *ngIf="!chatIsVisible">On</span>
+</button>

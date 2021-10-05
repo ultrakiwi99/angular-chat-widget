@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
+import {ChatService} from "./services/chat.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent {
-  title = 'angular-playground';
-  color = '';
+  constructor(private cs: ChatService) {
+  }
+
+  get chatIsVisible(): boolean {
+    return this.cs.chatVisible;
+  }
+
+  toggleChat(): void {
+    this.cs.chatVisible = !this.cs.chatVisible;
+  }
 }
