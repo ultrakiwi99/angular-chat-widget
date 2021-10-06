@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ChatService} from "./services/chat.service";
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent {
     return this.cs.chatVisible;
   }
 
-  toggleChat(): void {
-    this.cs.chatVisible = !this.cs.chatVisible;
+  addMessage($event: InputEvent): void {
+    console.log($event);
   }
 }

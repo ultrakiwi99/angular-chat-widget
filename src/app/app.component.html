@@ -3,12 +3,6 @@
     <h1>Angular chat</h1>
   </div>
   <div class="chat-messages"></div>
-  <div class="chat-input-controls">
-    <input />
-    <button>Send</button>
-  </div>
+  <app-chat-input></app-chat-input>
 </div>
-<button class="chat-button" (click)="toggleChat()">
-  <span *ngIf="chatIsVisible">Off</span>
-  <span *ngIf="!chatIsVisible">On</span>
-</button>
+<app-chat-button></app-chat-button>
